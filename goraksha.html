@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>GORAKSHA – Pashu Sanjeevini</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;600;700&family=Poppins:wght@400;500;600;700;800&family=Lora:wght@600;700&display=swap" rel="stylesheet"/>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --green:#2d7a3a;--green2:#3a9e4a;--green3:#e8f5e9;--green4:#c8e6c9;
+    --brown:#8d6748;--brown2:#f5efe8;--brown3:#ede0d4;
+    --red:#c0392b;--orange:#e67e22;--gold:#f0c040;
+    --text:#1a2e1a;--text2:#4a5568;--text3:#718096;
+    --white:#ffffff;--bg:#f8fdf8;
+    --shadow:0 4px 24px rgba(45,122,58,0.10);
+    --shadow2:0 8px 40px rgba(45,122,58,0.18);
+    --radius:16px;--radius2:24px;
+  }
+  body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+  /* NAV */
+  .nav{background:var(--white);border-bottom:2px solid var(--green4);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(45,122,58,0.08);}
+  .nav-brand{display:flex;align-items:center;gap:10px;}
+  .nav-logo{width:40px;height:40px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;}
+  .nav-title{font-family:'Lora',serif;font-size:18px;font-weight:700;color:var(--green);line-height:1.1;}
+  .nav-sub{font-size:10px;color:var(--brown);font-family:'Noto Sans Kannada',sans-serif;font-weight:600;}
+  .nav-tabs{display:flex;gap:4px;}
+  .nav-tab{padding:8px 14px;border:none;background:none;border-radius:12px;font-size:13px;font-weight:500;cursor:pointer;color:var(--text2);transition:all .2s;font-family:'Poppins',sans-serif;}
+  .nav-tab:hover{background:var(--green3);color:var(--green);}
+  .nav-tab.active{background:var(--green);color:var(--white);}
+
+  /* PAGE SYSTEM */
+  .page{display:none;animation:fadeSlide .35s ease;}
+  .page.active{display:block;}
+  @keyframes fadeSlide{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+  /* HOME */
+  .hero{background:linear-gradient(135deg,var(--green) 0%,#1a5c28 60%,#0d3d1a 100%);padding:48px 24px 60px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+  .hero-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;padding:6px 16px;border-radius:999px;font-size:12px;margin-bottom:20px;backdrop-filter:blur(4px);}
+  .hero h1{font-family:'Lora',serif;font-size:clamp(28px,6vw,44px);color:white;font-weight:700;line-height:1.15;margin-bottom:8px;}
+  .hero-sub{font-family:'Noto Sans Kannada',sans-serif;font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:6px;}
+  .hero-desc{color:rgba(255,255,255,0.65);font-size:13px;max-width:360px;margin:0 auto 32px;}
+  .hero-animals{font-size:32px;margin-bottom:28px;display:flex;justify-content:center;gap:12px;}
+  .hero-animals span{animation:float 3s ease-in-out infinite;}
+  .hero-animals span:nth-child(2){animation-delay:.5s;}
+  .hero-animals span:nth-child(3){animation-delay:1s;}
+  .hero-animals span:nth-child(4){animation-delay:1.5s;}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+  /* EMERGENCY BUTTON */
+  .emergency-wrap{display:flex;justify-content:center;margin-bottom:32px;}
+  .emergency-btn{background:var(--red);color:white;border:none;border-radius:20px;padding:18px 40px;font-size:18px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:12px;box-shadow:0 0 0 0 rgba(192,57,43,0.5);animation:pulse 2s infinite;transition:transform .15s,box-shadow .15s;font-family:'Poppins',sans-serif;}
+  .emergency-btn:hover{transform:scale(1.04);}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(192,57,43,0.5)}70%{box-shadow:0 0 0 16px rgba(192,57,43,0)}100%{box-shadow:0 0 0 0 rgba(192,57,43,0)}}
+  .emergency-icon{font-size:24px;}
+
+  /* HOME QUICK ACTIONS */
+  .quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 20px 24px;max-width:480px;margin:0 auto;}
+  .quick-card{background:var(--white);border-radius:var(--radius2);padding:24px 16px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .25s;box-shadow:var(--shadow);}
+  .quick-card:hover{border-color:var(--green2);transform:translateY(-4px);box-shadow:var(--shadow2);}
+  .quick-card .qc-icon{font-size:36px;margin-bottom:10px;display:block;}
+  .quick-card .qc-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;}
+  .quick-card .qc-sub{font-size:11px;color:var(--text3);}
+  .quick-card.green-card{background:linear-gradient(135deg,var(--green3),var(--green4));border-color:var(--green4);}
+  .quick-card.brown-card{background:linear-gradient(135deg,var(--brown2),var(--brown3));border-color:var(--brown3);}
+
+  /* STATS */
+  .stats-row{display:flex;justify-content:center;gap:24px;padding:0 20px 32px;flex-wrap:wrap;}
+  .stat-item{text-align:center;}
+  .stat-num{font-size:28px;font-weight:800;color:var(--green);}
+  .stat-label{font-size:11px;color:var(--text3);font-weight:500;}
+
+  /* SECTION HEADERS */
+  .section-header{padding:24px 20px 12px;max-width:640px;margin:0 auto;}
+  .section-header h2{font-size:20px;font-weight:700;color:var(--text);margin-bottom:4px;}
+  .section-header p{font-size:13px;color:var(--text3);}
+
+  /* DOCTOR SEARCH */
+  .search-bar{padding:0 20px 16px;max-width:640px;margin:0 auto;}
+  .search-row{display:flex;gap:10px;margin-bottom:12px;}
+  .search-input{flex:1;padding:12px 16px;border:2px solid var(--green4);border-radius:12px;font-size:14px;font-family:'Poppins',sans-serif;outline:none;transition:border-color .2s;}
+  .search-input:focus{border-color:var(--green);}
+  .filter-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .filter-chip{padding:6px 14px;border:1.5px solid var(--green4);border-radius:999px;font-size:12px;font-weight:500;cursor:pointer;background:white;color:var(--green);transition:all .15s;}
+  .filter-chip.active,.filter-chip:hover{background:var(--green);color:white;border-color:var(--green);}
+
+  /* DOCTOR LIST */
+  .doctor-list{padding:0 20px;max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .doctor-card{background:var(--white);border-radius:var(--radius2);padding:18px 20px;display:flex;gap:16px;box-shadow:var(--shadow);border:1.5px solid var(--green4);transition:all .2s;cursor:pointer;}
+  .doctor-card:hover{transform:translateY(-2px);box-shadow:var(--shadow2);border-color:var(--green2);}
+  .doc-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--green3),var(--green));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+  .doc-info{flex:1;}
+  .doc-name{font-size:15px;font-weight:700;color:var(--text);}
+  .doc-spec{font-size:12px;color:var(--green);font-weight:600;margin-bottom:4px;}
+  .doc-meta{display:flex;gap:12px;flex-wrap:wrap;}
+  .doc-meta span{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:3px;}
+  .doc-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+  .doc-dist{font-size:12px;font-weight:700;color:var(--green);background:var(--green3);padding:4px 10px;border-radius:999px;}
+  .stars{color:var(--gold);font-size:14px;}
+  .doc-type-badge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:999px;}
+  .govt{background:#e3f2fd;color:#1565c0;}
+  .private{background:var(--brown2);color:var(--brown);}
+  .call-btn{background:var(--green);color:white;border:none;border-radius:10px;padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:'Poppins',sans-serif;}
+  .call-btn:hover{background:var(--green2);transform:scale(1.04);}
+
+  /* MAP VIEW */
+  .map-container{margin:0 20px 24px;max-width:640px;margin-left:auto;margin-right:auto;border-radius:var(--radius2);overflow:hidden;border:2px solid var(--green4);background:#e8f5e9;height:280px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .map-placeholder{text-align:center;}
+  .map-placeholder .map-emoji{font-size:48px;margin-bottom:12px;display:block;}
+  .map-placeholder p{font-size:13px;color:var(--text3);}
+  .map-dot{position:absolute;width:14px;height:14px;background:var(--green);border:3px solid white;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.2);cursor:pointer;transition:transform .15s;}
+  .map-dot:hover{transform:scale(1.4);}
+  .map-dot.red-dot{background:var(--red);}
+  .map-dot.orange-dot{background:var(--orange);}
+  .map-tooltip{position:absolute;background:white;border-radius:8px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,0.15);pointer-events:none;opacity:0;transition:opacity .2s;}
+  .view-toggle{display:flex;gap:8px;padding:0 20px 16px;max-width:640px;margin:0 auto;}
+  .view-btn{flex:1;padding:10px;border:1.5px solid var(--green4);border-radius:12px;font-size:13px;font-weight:600;cursor:pointer;background:white;color:var(--text2);transition:all .15s;font-family:'Poppins',sans-serif;}
+  .view-btn.active{background:var(--green);color:white;border-color:var(--green);}
+
+  /* FIRST AID */
+  .aid-categories{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:0 20px 24px;max-width:640px;margin:0 auto;}
+  .aid-cat{background:white;border-radius:var(--radius);padding:20px 12px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .2s;box-shadow:var(--shadow);}
+  .aid-cat:hover,.aid-cat.active{border-color:var(--green);transform:translateY(-3px);}
+  .aid-cat .ac-icon{font-size:30px;display:block;margin-bottom:8px;}
+  .aid-cat .ac-name{font-size:12px;font-weight:700;color:var(--text);}
+  .aid-content{padding:0 20px 24px;max-width:640px;margin:0 auto;}
+  .aid-card{background:white;border-radius:var(--radius2);padding:22px;box-shadow:var(--shadow);border-left:5px solid var(--green);}
+  .aid-card h3{font-size:17px;font-weight:700;margin-bottom:16px;color:var(--green);}
+  .aid-step{display:flex;gap:14px;margin-bottom:14px;align-items:flex-start;}
+  .step-num{width:30px;height:30px;background:var(--green);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  .step-text{font-size:13px;color:var(--text2);line-height:1.6;}
+  .step-text strong{color:var(--text);}
+  .video-placeholder{background:linear-gradient(135deg,#1a2e1a,#2d7a3a);border-radius:var(--radius);height:160px;display:flex;align-items:center;justify-content:center;margin-top:16px;cursor:pointer;transition:transform .2s;}
+  .video-placeholder:hover{transform:scale(1.02);}
+  .play-btn{width:56px;height:56px;background:rgba(255,255,255,0.2);border:3px solid white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;color:white;}
+  .video-label{color:white;font-size:13px;margin-top:12px;opacity:0.85;}
+  .warning-box{background:#fff3e0;border-radius:12px;padding:14px 16px;margin-top:14px;border-left:4px solid var(--orange);}
+  .warning-box p{font-size:12px;color:#e65100;}
+
+  /* SCHEMES */
+  .schemes-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 20px 24px;max-width:640px;margin:0 auto;}
+  .scheme-card{background:white;border-radius:var(--radius2);padding:20px;box-shadow:var(--shadow);border:1.5px solid var(--green4);transition:all .2s;cursor:pointer;}
+  .scheme-card:hover{transform:translateY(-4px);box-shadow:var(--shadow2);}
+  .scheme-icon{font-size:28px;margin-bottom:10px;display:block;}
+  .scheme-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;}
+  .scheme-desc{font-size:11px;color:var(--text3);line-height:1.5;margin-bottom:12px;}
+  .scheme-amount{font-size:15px;font-weight:800;color:var(--green);}
+  .scheme-amount-label{font-size:10px;color:var(--text3);}
+  .apply-btn{width:100%;margin-top:12px;background:var(--green3);color:var(--green);border:1.5px solid var(--green4);border-radius:10px;padding:8px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:'Poppins',sans-serif;}
+  .apply-btn:hover{background:var(--green);color:white;}
+
+  /* PROFILE */
+  .profile-wrap{padding:24px 20px;max-width:480px;margin:0 auto;}
+  .profile-hero{background:linear-gradient(135deg,var(--green),#1a5c28);border-radius:var(--radius2);padding:32px 24px;text-align:center;margin-bottom:20px;color:white;}
+  .profile-avatar{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.2);border:3px solid rgba(255,255,255,0.5);margin:0 auto 14px;font-size:36px;display:flex;align-items:center;justify-content:center;}
+  .profile-name{font-size:20px;font-weight:700;margin-bottom:4px;}
+  .profile-village{font-size:13px;opacity:0.8;}
+  .profile-section{background:white;border-radius:var(--radius2);padding:20px;margin-bottom:14px;box-shadow:var(--shadow);}
+  .profile-section h3{font-size:14px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+  .profile-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--green4);}
+  .profile-row:last-child{border:none;}
+  .pr-label{font-size:13px;color:var(--text3);}
+  .pr-value{font-size:13px;font-weight:600;color:var(--text);}
+  .lang-toggle{display:flex;gap:8px;}
+  .lang-btn{padding:6px 14px;border:1.5px solid var(--green4);border-radius:999px;font-size:12px;cursor:pointer;background:white;transition:all .15s;font-family:'Poppins',sans-serif;}
+  .lang-btn.active{background:var(--green);color:white;border-color:var(--green);}
+
+  /* CHATBOT */
+  .chatbot-fab{position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:var(--green);border:none;border-radius:50%;font-size:26px;cursor:pointer;box-shadow:0 4px 20px rgba(45,122,58,0.35);z-index:200;transition:all .2s;display:flex;align-items:center;justify-content:center;}
+  .chatbot-fab:hover{transform:scale(1.1);background:var(--green2);}
+  .chatbot-window{position:fixed;bottom:96px;right:24px;width:320px;max-height:480px;background:white;border-radius:var(--radius2);box-shadow:0 8px 48px rgba(0,0,0,0.18);z-index:200;overflow:hidden;display:none;flex-direction:column;border:2px solid var(--green4);}
+  .chatbot-window.open{display:flex;animation:slideUp .25s ease;}
+  @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .chat-header{background:var(--green);padding:16px 18px;display:flex;align-items:center;gap:10px;}
+  .chat-header-avatar{width:36px;height:36px;background:rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;}
+  .chat-header-text{color:white;}
+  .chat-header-text .name{font-size:13px;font-weight:700;}
+  .chat-header-text .status{font-size:10px;opacity:0.8;}
+  .chat-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;max-height:300px;}
+  .msg{max-width:80%;padding:10px 14px;border-radius:16px;font-size:12px;line-height:1.5;}
+  .msg.bot{background:var(--green3);color:var(--text);border-bottom-left-radius:4px;align-self:flex-start;}
+  .msg.user{background:var(--green);color:white;border-bottom-right-radius:4px;align-self:flex-end;}
+  .msg.loading{opacity:0.7;animation:blink 1s infinite;}
+  @keyframes blink{0%,100%{opacity:0.7}50%{opacity:0.3}}
+  .chat-input-row{padding:12px;border-top:1.5px solid var(--green4);display:flex;gap:8px;}
+  .chat-input{flex:1;padding:10px 12px;border:1.5px solid var(--green4);border-radius:10px;font-size:12px;outline:none;font-family:'Poppins',sans-serif;}
+  .chat-send{background:var(--green);color:white;border:none;border-radius:10px;padding:0 14px;font-size:16px;cursor:pointer;transition:background .15s;}
+  .chat-send:hover{background:var(--green2);}
+  .chat-quick-btns{padding:0 12px 8px;display:flex;gap:6px;flex-wrap:wrap;}
+  .qb{padding:5px 10px;border:1px solid var(--green4);border-radius:999px;font-size:10px;font-weight:500;cursor:pointer;background:white;color:var(--green);transition:all .15s;}
+  .qb:hover{background:var(--green);color:white;}
+
+  /* MODAL */
+  .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:300;display:flex;align-items:center;justify-content:center;display:none;}
+  .modal-overlay.open{display:flex;animation:fadeIn .2s ease;}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .modal-box{background:white;border-radius:var(--radius2);padding:32px 28px;max-width:340px;width:90%;text-align:center;box-shadow:0 20px 80px rgba(0,0,0,0.25);}
+  .modal-icon{font-size:48px;margin-bottom:16px;display:block;}
+  .modal-title{font-size:18px;font-weight:700;margin-bottom:8px;}
+  .modal-text{font-size:13px;color:var(--text3);line-height:1.6;margin-bottom:24px;}
+  .modal-actions{display:flex;gap:12px;}
+  .modal-btn{flex:1;padding:12px;border-radius:12px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all .15s;font-family:'Poppins',sans-serif;}
+  .modal-btn.primary{background:var(--green);color:white;}
+  .modal-btn.secondary{background:var(--green3);color:var(--green);}
+  .modal-btn:hover{transform:scale(1.03);}
+
+  /* TOAST */
+  .toast{position:fixed;top:80px;left:50%;transform:translateX(-50%) translateY(-20px);background:var(--green);color:white;padding:12px 24px;border-radius:999px;font-size:13px;font-weight:600;opacity:0;transition:all .3s;z-index:400;pointer-events:none;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* RESPONSIVE */
+  @media(max-width:400px){
+    .nav-tabs{display:none}
+    .schemes-grid{grid-template-columns:1fr}
+    .aid-categories{grid-template-columns:1fr 1fr}
+    .quick-grid{grid-template-columns:1fr 1fr}
+  }
+  .bottom-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:white;border-top:1.5px solid var(--green4);padding:8px 0;z-index:150;}
+  @media(max-width:480px){
+    .bottom-nav{display:flex;justify-content:space-around;}
+    .nav-tabs{display:none}
+    body{padding-bottom:72px;}
+  }
+  .bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 12px;border-radius:10px;transition:all .15s;}
+  .bnav-item .bn-icon{font-size:20px;}
+  .bnav-item .bn-label{font-size:9px;font-weight:600;color:var(--text3);}
+  .bnav-item.active .bn-label{color:var(--green);}
+  .bnav-item.active{background:var(--green3);}
+
+  /* OFFLINE BADGE */
+  .offline-badge{display:inline-flex;align-items:center;gap:6px;background:var(--brown2);border:1px solid var(--brown3);border-radius:999px;padding:4px 12px;font-size:11px;font-weight:600;color:var(--brown);margin-bottom:16px;}
+  .offline-dot{width:7px;height:7px;background:#4caf50;border-radius:50%;animation:dotBlink 2s infinite;}
+  @keyframes dotBlink{0%,100%{opacity:1}50%{opacity:0.3}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">🐄</div>
+    <div>
+      <div class="nav-title">GORAKSHA</div>
+      <div class="nav-sub">ಪಶು ಸಂಜೀವಿನಿ</div>
+    </div>
+  </div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('home',this)">Home</button>
+    <button class="nav-tab" onclick="showPage('doctors',this)">Doctors</button>
+    <button class="nav-tab" onclick="showPage('firstaid',this)">First Aid</button>
+    <button class="nav-tab" onclick="showPage('schemes',this)">Schemes</button>
+    <button class="nav-tab" onclick="showPage('profile',this)">Profile</button>
+  </div>
+</nav>
+
+<!-- BOTTOM NAV (mobile) -->
+<div class="bottom-nav">
+  <div class="bnav-item active" onclick="showPage('home')"><span class="bn-icon">🏠</span><span class="bn-label">Home</span></div>
+  <div class="bnav-item" onclick="showPage('doctors')"><span class="bn-icon">👨‍⚕️</span><span class="bn-label">Doctors</span></div>
+  <div class="bnav-item" onclick="showPage('firstaid')"><span class="bn-icon">🩺</span><span class="bn-label">First Aid</span></div>
+  <div class="bnav-item" onclick="showPage('schemes')"><span class="bn-icon">📋</span><span class="bn-label">Schemes</span></div>
+  <div class="bnav-item" onclick="showPage('profile')"><span class="bn-icon">👤</span><span class="bn-label">Profile</span></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- EMERGENCY MODAL -->
+<div class="modal-overlay" id="emergencyModal">
+  <div class="modal-box">
+    <span class="modal-icon">🚨</span>
+    <div class="modal-title">Emergency Call</div>
+    <div class="modal-text" id="emergencyModalText">Connecting you to the nearest veterinary doctor…<br><br><strong>Dr. Rajesh Kumar</strong><br>Government Vet Hospital, Ponda<br>📍 1.2 km away</div>
+    <div class="modal-actions">
+      <button class="modal-btn secondary" onclick="closeModal()">Cancel</button>
+      <button class="modal-btn primary" onclick="simulateCall()">📞 Call Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- CALL MODAL -->
+<div class="modal-overlay" id="callModal">
+  <div class="modal-box">
+    <span class="modal-icon" id="callIcon">📞</span>
+    <div class="modal-title" id="callTitle">Calling…</div>
+    <div class="modal-text" id="callText"></div>
+    <div class="modal-actions">
+      <button class="modal-btn primary" onclick="closeCallModal()">End Call</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== HOME PAGE ===================== -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-badge">🌿 ಗ್ರಾಮೀಣ ಪಶು ಆರೋಗ್ಯ ಸೇವೆ · Rural Animal Healthcare</div>
+    <div class="hero-animals">
+      <span>🐄</span><span>🐂</span><span>🐐</span><span>🐑</span>
+    </div>
+    <h1>GORAKSHA</h1>
+    <div class="hero-sub">ಪಶು ಸಂಜೀವಿನಿ</div>
+    <div class="hero-desc">Your trusted companion for animal health — 24/7 emergency vet support for farmers</div>
+    <div class="emergency-wrap">
+      <button class="emergency-btn" onclick="openEmergency()">
+        <span class="emergency-icon">🚨</span>
+        EMERGENCY — ತುರ್ತು ಸಹಾಯ
+      </button>
+    </div>
+  </div>
+
+  <div style="padding:24px 20px 8px;max-width:640px;margin:0 auto;text-align:center;">
+    <div class="offline-badge"><span class="offline-dot"></span>First Aid works offline · ಆಫ್‌ಲೈನ್‌ನಲ್ಲಿ ಕೆಲಸ ಮಾಡುತ್ತದೆ</div>
+  </div>
+
+  <div class="quick-grid">
+    <div class="quick-card green-card" onclick="showPage('doctors')">
+      <span class="qc-icon">👨‍⚕️</span>
+      <div class="qc-title">Find Doctor</div>
+      <div class="qc-sub">Vet near you · ನಿಮ್ಮ ಸಮೀಪದ ವೈದ್ಯರು</div>
+    </div>
+    <div class="quick-card" onclick="showPage('firstaid')">
+      <span class="qc-icon">🩺</span>
+      <div class="qc-title">First Aid</div>
+      <div class="qc-sub">Quick care steps · ಪ್ರಥಮ ಚಿಕಿತ್ಸೆ</div>
+    </div>
+    <div class="quick-card brown-card" onclick="showPage('schemes')">
+      <span class="qc-icon">📋</span>
+      <div class="qc-title">Govt Schemes</div>
+      <div class="qc-sub">Benefits & subsidies</div>
+    </div>
+    <div class="quick-card" onclick="showPage('profile')">
+      <span class="qc-icon">👤</span>
+      <div class="qc-title">My Profile</div>
+      <div class="qc-sub">Records & history</div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-item"><div class="stat-num">240+</div><div class="stat-label">Doctors Registered</div></div>
+    <div class="stat-item"><div class="stat-num">18</div><div class="stat-label">Districts Covered</div></div>
+    <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">Emergency Support</div></div>
+    <div class="stat-item"><div class="stat-num">12K+</div><div class="stat-label">Animals Helped</div></div>
+  </div>
+
+  <div style="padding:0 20px 32px;max-width:640px;margin:0 auto;">
+    <div style="background:white;border-radius:var(--radius2);padding:20px;box-shadow:var(--shadow);border-left:5px solid var(--orange);">
+      <div style="font-size:13px;font-weight:700;margin-bottom:8px;color:var(--orange);">⚠️ Today's Animal Health Alert</div>
+      <div style="font-size:12px;color:var(--text2);line-height:1.6;">FMD (Foot & Mouth Disease) advisory in Belagavi district. Keep animals separated and contact your nearest Govt Vet immediately. <span style="color:var(--green);font-weight:600;cursor:pointer;" onclick="showPage('firstaid')">See First Aid →</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== DOCTORS PAGE ===================== -->
+<div class="page" id="page-doctors">
+  <div class="section-header">
+    <h2>👨‍⚕️ Find Veterinary Doctors</h2>
+    <p>Search nearby vets · ಸಮೀಪದ ಪಶು ವೈದ್ಯರನ್ನು ಹುಡುಕಿ</p>
+  </div>
+
+  <div class="search-bar">
+    <div class="search-row">
+      <input class="search-input" id="docSearch" placeholder="🔍 Search doctor or village…" oninput="filterDocs()"/>
+    </div>
+    <div class="filter-row">
+      <div class="filter-chip active" onclick="setFilter('all',this)">All</div>
+      <div class="filter-chip" onclick="setFilter('govt',this)">🏥 Government</div>
+      <div class="filter-chip" onclick="setFilter('private',this)">🏢 Private</div>
+      <div class="filter-chip" onclick="setFilter('near',this)">📍 Nearest First</div>
+      <div class="filter-chip" onclick="setFilter('rated',this)">⭐ Top Rated</div>
+    </div>
+  </div>
+
+  <div class="view-toggle">
+    <button class="view-btn active" id="btnList" onclick="setView('list')">📋 List View</button>
+    <button class="view-btn" id="btnMap" onclick="setView('map')">🗺 Map View</button>
+  </div>
+
+  <div id="mapView" style="display:none;">
+    <div class="map-container" id="mapBox">
+      <div class="map-placeholder">
+        <span class="map-emoji">🗺️</span>
+        <p>Map showing nearby veterinary doctors</p>
+        <p style="font-size:11px;margin-top:4px;color:var(--green);">Google Maps API would load here</p>
+      </div>
+      <!-- Simulated map dots -->
+      <div class="map-dot red-dot" style="top:40%;left:48%;transform:translate(-50%,-50%)" title="You"></div>
+      <div class="map-dot" style="top:30%;left:60%" onclick="showToast('Dr. Rajesh Kumar – 1.2km away')"></div>
+      <div class="map-dot" style="top:55%;left:35%" onclick="showToast('Dr. Meena Patil – 2.8km away')"></div>
+      <div class="map-dot orange-dot" style="top:25%;left:38%" onclick="showToast('Dr. Suresh Nayak – 4.1km away')"></div>
+      <div class="map-dot" style="top:65%;left:62%" onclick="showToast('Dr. Lakshmi Bai – 5.3km away')"></div>
+    </div>
+    <div style="padding:0 20px 8px;max-width:640px;margin:0 auto;font-size:11px;color:var(--text3);">
+      🔴 Your location &nbsp;🟢 Government Doctor &nbsp;🟠 Private Doctor
+    </div>
+  </div>
+
+  <div class="doctor-list" id="doctorList"></div>
+  <div style="height:24px"></div>
+</div>
+
+<!-- ===================== FIRST AID PAGE ===================== -->
+<div class="page" id="page-firstaid">
+  <div class="section-header">
+    <h2>🩺 Animal First Aid</h2>
+    <p>Select a condition · ಸ್ಥಿತಿಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</p>
+    <div style="margin-top:8px;"><div class="offline-badge"><span class="offline-dot"></span>Available Offline</div></div>
+  </div>
+
+  <div class="aid-categories">
+    <div class="aid-cat active" onclick="showAid('fever',this)"><span class="ac-icon">🌡️</span><span class="ac-name">Fever</span></div>
+    <div class="aid-cat" onclick="showAid('injury',this)"><span class="ac-icon">🩹</span><span class="ac-name">Injury</span></div>
+    <div class="aid-cat" onclick="showAid('infection',this)"><span class="ac-icon">🦠</span><span class="ac-name">Infection</span></div>
+    <div class="aid-cat" onclick="showAid('digestion',this)"><span class="ac-icon">🫁</span><span class="ac-name">Digestion</span></div>
+    <div class="aid-cat" onclick="showAid('pregnancy',this)"><span class="ac-icon">🐮</span><span class="ac-name">Pregnancy</span></div>
+    <div class="aid-cat" onclick="showAid('poison',this)"><span class="ac-icon">☠️</span><span class="ac-name">Poisoning</span></div>
+  </div>
+
+  <div class="aid-content" id="aidContent"></div>
+</div>
+
+<!-- ===================== SCHEMES PAGE ===================== -->
+<div class="page" id="page-schemes">
+  <div class="section-header">
+    <h2>📋 Government Schemes</h2>
+    <p>Benefits for farmers · ರೈತರಿಗೆ ಸರ್ಕಾರಿ ಸೌಲಭ್ಯಗಳು</p>
+  </div>
+
+  <div style="padding:0 20px 16px;max-width:640px;margin:0 auto;">
+    <div style="background:linear-gradient(135deg,var(--green),#1a5c28);border-radius:var(--radius2);padding:20px 24px;color:white;display:flex;align-items:center;gap:16px;">
+      <div style="font-size:36px;">🏆</div>
+      <div>
+        <div style="font-size:14px;font-weight:700;margin-bottom:4px;">You may qualify for ₹75,000+</div>
+        <div style="font-size:11px;opacity:0.8;">Check schemes below and apply today</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="schemes-grid" id="schemesGrid"></div>
+</div>
+
+<!-- ===================== PROFILE PAGE ===================== -->
+<div class="page" id="page-profile">
+  <div class="profile-wrap">
+    <div class="profile-hero">
+      <div class="profile-avatar">👨‍🌾</div>
+      <div class="profile-name">Ramesh Gowda</div>
+      <div class="profile-village">📍 Ponda Village, Goa · Farmer ID: GJ-2024-1847</div>
+    </div>
+
+    <div class="profile-section">
+      <h3>🐄 My Animals</h3>
+      <div class="profile-row"><span class="pr-label">Cows</span><span class="pr-value">4</span></div>
+      <div class="profile-row"><span class="pr-label">Buffaloes</span><span class="pr-value">2</span></div>
+      <div class="profile-row"><span class="pr-label">Goats</span><span class="pr-value">8</span></div>
+      <div class="profile-row"><span class="pr-label">Last Vaccination</span><span class="pr-value">12 May 2025</span></div>
+      <div class="profile-row"><span class="pr-label">Next Due</span><span class="pr-value" style="color:var(--orange);font-weight:700;">⚠️ 28 Jun 2026</span></div>
+    </div>
+
+    <div class="profile-section">
+      <h3>📞 Recent Consultations</h3>
+      <div class="profile-row"><span class="pr-label">Dr. Rajesh Kumar</span><span class="pr-value">3 days ago</span></div>
+      <div class="profile-row"><span class="pr-label">Dr. Meena Patil</span><span class="pr-value">2 weeks ago</span></div>
+      <div class="profile-row"><span class="pr-label">Emergency Call</span><span class="pr-value">1 month ago</span></div>
+    </div>
+
+    <div class="profile-section">
+      <h3>🌐 Language · ಭಾಷೆ</h3>
+      <div style="margin-top:4px;" class="lang-toggle">
+        <button class="lang-btn active">English</button>
+        <button class="lang-btn" onclick="showToast('ಕನ್ನಡ ಆಯ್ಕೆ ಮಾಡಲಾಗಿದೆ!')">ಕನ್ನಡ</button>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h3>⚙️ Settings</h3>
+      <div class="profile-row"><span class="pr-label">Notifications</span><span class="pr-value">On ✅</span></div>
+      <div class="profile-row"><span class="pr-label">Location Access</span><span class="pr-value">Allowed ✅</span></div>
+      <div class="profile-row" style="cursor:pointer;" onclick="showToast('Logged out!')"><span class="pr-label" style="color:var(--red);">Logout</span><span class="pr-value">→</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CHATBOT FAB -->
+<button class="chatbot-fab" onclick="toggleChat()" id="chatFab">🤖</button>
+
+<div class="chatbot-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-header-avatar">🐄</div>
+    <div class="chat-header-text">
+      <div class="name">Pashu Mitra AI</div>
+      <div class="status">Powered by Claude · Always online</div>
+    </div>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="msg bot">ನಮಸ್ಕಾರ! 🙏 Hello! I'm <strong>Pashu Mitra</strong>, your AI animal health assistant. Ask me anything about your animals!</div>
+  </div>
+  <div class="chat-quick-btns">
+    <div class="qb" onclick="sendQuick('My cow has fever')">🌡️ Cow fever</div>
+    <div class="qb" onclick="sendQuick('How to vaccinate goats?')">💉 Vaccination</div>
+    <div class="qb" onclick="sendQuick('What govt schemes can I apply for?')">📋 Schemes</div>
+  </div>
+  <div class="chat-input-row">
+    <input class="chat-input" id="chatInput" placeholder="Type your question…" onkeydown="if(event.key==='Enter')sendChat()"/>
+    <button class="chat-send" onclick="sendChat()">➤</button>
+  </div>
+</div>
+
+<script>
+// DATA
+const doctors = [
+  {name:"Dr. Rajesh Kumar",spec:"Large Animal Specialist",loc:"Ponda Govt Vet Hospital",phone:"9876543210",dist:1.2,rating:4.8,type:"govt",emoji:"👨‍⚕️"},
+  {name:"Dr. Meena Patil",spec:"Bovine & Small Ruminant",loc:"Ponda Town, Near Bus Stand",phone:"9123456780",dist:2.8,rating:4.6,type:"private",emoji:"👩‍⚕️"},
+  {name:"Dr. Suresh Nayak",spec:"General Veterinarian",loc:"Farmagudi Govt Hospital",phone:"9234567891",dist:4.1,rating:4.4,type:"govt",emoji:"👨‍⚕️"},
+  {name:"Dr. Lakshmi Bai",spec:"Poultry & Dairy",loc:"Bandora Village",phone:"9345678912",dist:5.3,rating:4.5,type:"private",emoji:"👩‍⚕️"},
+  {name:"Dr. Anand Shetty",spec:"Emergency & Surgery",loc:"Govt Animal Hospital, Margao",phone:"9456789123",dist:7.6,rating:4.9,type:"govt",emoji:"👨‍⚕️"},
+  {name:"Dr. Priya Dessai",spec:"Dairy & Reproduction",loc:"Verna Industrial Area",phone:"9567891234",dist:9.2,rating:4.3,type:"private",emoji:"👩‍⚕️"},
+];
+
+const aidData = {
+  fever:{title:"🌡️ Animal Fever – First Aid",steps:[
+    {n:1,t:"Check temperature",d:"Use a rectal thermometer. <strong>Normal: 38–39.5°C</strong>. Above 40°C is high fever."},
+    {n:2,t:"Keep animal cool",d:"Move to shade. Apply <strong>cold wet cloth</strong> to forehead, neck and hooves. Use a fan if available."},
+    {n:3,t:"Give clean water",d:"Ensure fresh drinking water. Add a pinch of salt + sugar for hydration (ORS for animals)."},
+    {n:4,t:"Avoid feeding",d:"Do NOT give heavy feed. Light green grass or hay is fine if the animal wants to eat."},
+    {n:5,t:"Call vet if no improvement",d:"If fever persists beyond <strong>24 hours</strong> or animal stops eating/drinking, call vet immediately."},
+  ],warn:"⚠️ Never give human medicines like Paracetamol to animals without vet advice.",video:"Fever Care in Cattle"},
+  injury:{title:"🩹 Wound & Injury – First Aid",steps:[
+    {n:1,t:"Stop the bleeding",d:"Press a <strong>clean cloth</strong> firmly on the wound for 5–10 minutes. Do not remove until bleeding stops."},
+    {n:2,t:"Clean the wound",d:"Gently rinse with clean water. Remove dirt carefully. Use <strong>Betadine (Povidone Iodine)</strong> diluted in water."},
+    {n:3,t:"Apply antiseptic",d:"Use <strong>Gentian Violet</strong> spray or Povidone Iodine ointment to prevent infection."},
+    {n:4,t:"Bandage if needed",d:"Cover with clean bandage to keep flies away. Change bandage every day."},
+    {n:5,t:"Prevent licking",d:"Use a cone collar if possible. Licking the wound causes infection and delays healing."},
+  ],warn:"⚠️ Deep cuts, bone fractures or puncture wounds require immediate veterinary attention.",video:"Wound Management in Farm Animals"},
+  infection:{title:"🦠 Infection Signs – First Aid",steps:[
+    {n:1,t:"Identify signs",d:"Look for <strong>swelling, pus, foul smell, redness</strong> around a wound or body part. Limping may indicate foot infection."},
+    {n:2,t:"Isolate the animal",d:"Separate the sick animal from others to prevent <strong>spread of infection</strong>."},
+    {n:3,t:"Clean infected area",d:"Wash with <strong>warm salty water</strong> (1 tsp salt in 1 litre water) 2–3 times a day."},
+    {n:4,t:"Apply antiseptic",d:"Use Betadine or <strong>Neosporin cream</strong> after cleaning. Do not bandage tightly."},
+    {n:5,t:"Seek vet for antibiotics",d:"Infections require <strong>antibiotic treatment</strong> which only a vet can prescribe safely."},
+  ],warn:"⚠️ FMD, Brucellosis and other contagious diseases must be reported to Govt Vet immediately.",video:"Infection Control in Livestock"},
+  digestion:{title:"🫁 Digestive Problems – First Aid",steps:[
+    {n:1,t:"Identify bloating",d:"Press the left flank (behind last rib). If it sounds like a drum – animal has <strong>bloat (Tympany)</strong>."},
+    {n:2,t:"Walk the animal",d:"For mild bloat, walk the animal slowly for 15–20 minutes. This helps release trapped gas."},
+    {n:3,t:"Provide turpentine oil",d:"Mix <strong>30ml turpentine oil in 300ml linseed oil</strong>. Give orally using a bottle. Only for bloat."},
+    {n:4,t:"Reduce feed",d:"Stop green feed, silage. Give dry hay only. Avoid sudden diet changes which cause bloat."},
+    {n:5,t:"Call vet immediately",d:"Severe bloat is <strong>life-threatening</strong>. If animal collapses or breathes heavily, call vet NOW."},
+  ],warn:"⚠️ Do NOT give laxatives without vet guidance. Constipation and diarrhea have opposite treatments.",video:"Bloat Management in Cattle"},
+  pregnancy:{title:"🐮 Pregnancy Care – First Aid",steps:[
+    {n:1,t:"Signs of labour",d:"Animal becomes restless, isolates itself, udder swells, vulva swells and relaxes. Normal labour takes <strong>2–4 hours</strong>."},
+    {n:2,t:"Prepare clean space",d:"Provide a <strong>clean, dry, well-bedded</strong> space. Remove sharp objects. Ensure good lighting."},
+    {n:3,t:"Observe quietly",d:"<strong>Do not interfere</strong> in normal delivery. Keep the animal calm and watch from a distance."},
+    {n:4,t:"Assist if stuck",d:"If calf/kid is visible but no progress in <strong>30 minutes</strong>, gently assist with clean hands and rope."},
+    {n:5,t:"Post-birth care",d:"Ensure mother licks baby. Baby must feed <strong>colostrum within 2 hours</strong>. Remove placenta within 12 hours."},
+  ],warn:"⚠️ Retained placenta after 24 hours, prolapse, or twins in abnormal position — call vet immediately.",video:"Safe Calving in Dairy Cows"},
+  poison:{title:"☠️ Poisoning – Emergency First Aid",steps:[
+    {n:1,t:"Identify signs",d:"Sudden collapse, excessive drooling, seizures, difficulty breathing, dilated pupils — <strong>may indicate poisoning</strong>."},
+    {n:2,t:"Remove from source",d:"Immediately move the animal away from suspected toxic plant, chemical or substance."},
+    {n:3,t:"Do NOT induce vomiting",d:"Unlike humans, inducing vomiting in ruminants is <strong>dangerous</strong>. Do NOT do this."},
+    {n:4,t:"Give activated charcoal",d:"If available, mix <strong>250–500g activated charcoal in water</strong> and give orally via bottle drench."},
+    {n:5,t:"CALL VET IMMEDIATELY",d:"Poisoning is a <strong>life-threatening emergency</strong>. Do not wait. Call the nearest vet right now."},
+  ],warn:"⚠️ This is a MEDICAL EMERGENCY. Call 1962 (Pashu Helpline) immediately.",video:"Emergency Response for Animal Poisoning"},
+};
+
+const schemes = [
+  {icon:"🐄",name:"Rashtriya Gokul Mission",desc:"Support for indigenous breeds, semen stations and breeding farms",amount:"₹2,025 Cr",label:"National Budget",color:"#e8f5e9"},
+  {icon:"🏥",name:"Livestock Health & Disease Control",desc:"Free vaccination, disease surveillance and emergency veterinary services",amount:"Free",label:"Government Benefit",color:"#e3f2fd"},
+  {icon:"🌾",name:"PM-KISAN Animal Link",desc:"Additional support for farmers with registered livestock under PM-KISAN",amount:"₹6,000/yr",label:"Annual Support",color:"#fff8e1"},
+  {icon:"💉",name:"Kisan Credit Card – Animal",desc:"Subsidized credit for purchasing animals, feed and equipment",amount:"4% Interest",label:"Subsidized Rate",color:"#fce4ec"},
+  {icon:"🔬",name:"Pashu Sanjivani Scheme",desc:"Health card for all animals with free health check-up camps",amount:"Free Camp",label:"Health Cards",color:"#f3e5f5"},
+  {icon:"🚚",name:"Mobile Veterinary Units",desc:"Government mobile vet units for remote and rural areas",amount:"Free Visit",label:"At Your Doorstep",color:"#e8f5e9"},
+];
+
+let currentFilter = 'all';
+let currentView = 'list';
+let chatOpen = false;
+
+// RENDER DOCTORS
+function renderDoctors(list){
+  const el = document.getElementById('doctorList');
+  if(!list.length){el.innerHTML='<p style="text-align:center;color:var(--text3);padding:32px;">No doctors found.</p>';return;}
+  el.innerHTML = list.map(d=>`
+    <div class="doctor-card">
+      <div class="doc-avatar">${d.emoji}</div>
+      <div class="doc-info">
+        <div class="doc-name">${d.name}</div>
+        <div class="doc-spec">${d.spec}</div>
+        <div class="doc-meta">
+          <span>📍 ${d.loc}</span>
+          <span>📞 ${d.phone}</span>
+        </div>
+        <div style="margin-top:6px;"><span class="doc-type-badge ${d.type}">${d.type==='govt'?'🏥 Govt':'🏢 Private'}</span></div>
+      </div>
+      <div class="doc-right">
+        <div class="doc-dist">📍 ${d.dist}km</div>
+        <div class="stars">${'★'.repeat(Math.floor(d.rating))}${d.rating%1?'½':''} <span style="font-size:11px;color:var(--text3);">${d.rating}</span></div>
+        <button class="call-btn" onclick="callDoctor('${d.name}','${d.phone}')">📞 Call</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterDocs(){
+  const q = document.getElementById('docSearch').value.toLowerCase();
+  let list = doctors.filter(d=>d.name.toLowerCase().includes(q)||d.loc.toLowerCase().includes(q)||d.spec.toLowerCase().includes(q));
+  if(currentFilter==='govt') list=list.filter(d=>d.type==='govt');
+  if(currentFilter==='private') list=list.filter(d=>d.type==='private');
+  if(currentFilter==='near') list=[...list].sort((a,b)=>a.dist-b.dist);
+  if(currentFilter==='rated') list=[...list].sort((a,b)=>b.rating-a.rating);
+  renderDoctors(list);
+}
+
+function setFilter(f, el){
+  currentFilter=f;
+  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  filterDocs();
+}
+
+function setView(v){
+  currentView=v;
+  document.getElementById('btnList').classList.toggle('active',v==='list');
+  document.getElementById('btnMap').classList.toggle('active',v==='map');
+  document.getElementById('doctorList').style.display=v==='list'?'flex':'none';
+  document.getElementById('mapView').style.display=v==='map'?'block':'none';
+}
+
+// FIRST AID
+function showAid(key, el){
+  document.querySelectorAll('.aid-cat').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  const d = aidData[key];
+  document.getElementById('aidContent').innerHTML=`
+    <div class="aid-card">
+      <h3>${d.title}</h3>
+      ${d.steps.map(s=>`
+        <div class="aid-step">
+          <div class="step-num">${s.n}</div>
+          <div class="step-text"><strong>${s.t}:</strong> ${s.d}</div>
+        </div>
+      `).join('')}
+      <div class="warning-box"><p>${d.warn}</p></div>
+      <div class="video-placeholder" onclick="showToast('Video: ${d.video}')">
+        <div style="text-align:center">
+          <div class="play-btn">▶</div>
+          <div class="video-label">${d.video}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// SCHEMES
+function renderSchemes(){
+  document.getElementById('schemesGrid').innerHTML = schemes.map(s=>`
+    <div class="scheme-card">
+      <span class="scheme-icon">${s.icon}</span>
+      <div class="scheme-name">${s.name}</div>
+      <div class="scheme-desc">${s.desc}</div>
+      <div class="scheme-amount">${s.amount}</div>
+      <div class="scheme-amount-label">${s.label}</div>
+      <button class="apply-btn" onclick="showToast('Opening application for ${s.name}')">Apply Now →</button>
+    </div>
+  `).join('');
+}
+
+// PAGE NAVIGATION
+function showPage(page, tabEl){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.bnav-item').forEach(t=>t.classList.remove('active'));
+  if(tabEl) tabEl.classList.add('active');
+  const pages=['home','doctors','firstaid','schemes','profile'];
+  const idx=pages.indexOf(page);
+  if(idx>=0) document.querySelectorAll('.bnav-item')[idx]?.classList.add('active');
+  if(page==='doctors') filterDocs();
+}
+
+// EMERGENCY
+function openEmergency(){
+  document.getElementById('emergencyModal').classList.add('open');
+}
+function closeModal(){
+  document.getElementById('emergencyModal').classList.remove('open');
+}
+function simulateCall(){
+  closeModal();
+  const callModal = document.getElementById('callModal');
+  document.getElementById('callIcon').textContent='📞';
+  document.getElementById('callTitle').textContent='Calling Dr. Rajesh Kumar…';
+  document.getElementById('callText').textContent='Government Vet Hospital, Ponda\n📍 1.2 km away\n\nPlease stay on the line…';
+  callModal.classList.add('open');
+  setTimeout(()=>{
+    document.getElementById('callIcon').textContent='✅';
+    document.getElementById('callTitle').textContent='Call Connected!';
+    document.getElementById('callText').textContent='Dr. Rajesh Kumar is on the line. Describe your animal\'s symptoms clearly.';
+  }, 2000);
+}
+function closeCallModal(){document.getElementById('callModal').classList.remove('open');}
+
+function callDoctor(name, phone){
+  document.getElementById('callModal').classList.add('open');
+  document.getElementById('callIcon').textContent='📞';
+  document.getElementById('callTitle').textContent=`Calling ${name}…`;
+  document.getElementById('callText').textContent=`📞 ${phone}\n\nSimulating call connection…`;
+  setTimeout(()=>{
+    document.getElementById('callIcon').textContent='✅';
+    document.getElementById('callTitle').textContent='Connected!';
+    document.getElementById('callText').textContent=`You are connected to ${name}. Please describe your animal's symptoms.`;
+  },1800);
+}
+
+// TOAST
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+// CHATBOT
+function toggleChat(){
+  chatOpen=!chatOpen;
+  const w=document.getElementById('chatWindow');
+  w.classList.toggle('open',chatOpen);
+  document.getElementById('chatFab').textContent=chatOpen?'✕':'🤖';
+}
+
+async function sendChat(){
+  const input=document.getElementById('chatInput');
+  const msg=input.value.trim();
+  if(!msg)return;
+  input.value='';
+  addMsg(msg,'user');
+  const loadId=addMsg('…','bot loading');
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system:`You are Pashu Mitra, a friendly AI assistant for GORAKSHA (Pashu Sanjeevini), an Indian rural veterinary app. 
+        Help farmers with animal health questions in simple English or Kannada. 
+        Give practical, actionable advice. Be warm and use emojis. 
+        Always recommend consulting a veterinarian for serious issues.
+        Keep responses under 120 words. Occasionally say "ನಮಸ್ಕಾರ" or use Kannada phrases naturally.`,
+        messages:[{role:'user',content:msg}]
+      })
+    });
+    const data=await res.json();
+    const reply=data.content?.[0]?.text||'Sorry, I could not understand. Please try again.';
+    updateMsg(loadId,reply);
+  }catch(e){
+    updateMsg(loadId,'🔌 Connection issue. Please check internet and try again.');
+  }
+}
+
+function sendQuick(q){
+  document.getElementById('chatInput').value=q;
+  sendChat();
+}
+
+let msgId=0;
+function addMsg(text,cls){
+  const id='msg-'+(++msgId);
+  const div=document.getElementById('chatMessages');
+  div.innerHTML+=`<div class="msg ${cls}" id="${id}">${text}</div>`;
+  div.scrollTop=div.scrollHeight;
+  return id;
+}
+function updateMsg(id,text){
+  const el=document.getElementById(id);
+  if(el){el.className='msg bot';el.textContent=text;}
+  document.getElementById('chatMessages').scrollTop=9999;
+}
+
+// INIT
+renderDoctors(doctors);
+showAid('fever',document.querySelector('.aid-cat'));
+renderSchemes();
+</script>
+</body>
+</html>
