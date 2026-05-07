@@ -640,8 +640,178 @@ Simple logo of an Indian farmer standing with a cow, rural theme, minimal vector
 **Prompt:**
 
 ```
-Modern logo of a cow inside a shield symbolizing protection and safety, green color palette, minimal vector design, clean and bold, veterinary healthcare branding, transparent background
+ಸೂಪರ್ 🔥 — ನಿನ್ನ ವೆಬ್ಸೈಟ್ ತುಂಬಾ ಚೆನ್ನಾಗಿ ಡಿಸೈನ್ ಮಾಡಿದ್ದೀಯ. ಈಗ ಅದನ್ನು **real images ಹಾಕಿದ್ರೆ ಇನ್ನೂ professional ಆಗುತ್ತದೆ**.
+
+ನಾನು ನಿನ್ನ ಕೋಡ್ analyze ಮಾಡಿ, section-wise perfect **AI image prompts** ಕೊಡ್ತೀನಿ 👇
+
+---
+
+# 🎯 1. HERO SECTION (Home page top)
+
+👉 (Green background remove ಮಾಡಿ image use ಮಾಡಬಹುದು)
+
+**Prompt:**
+
+```
+A realistic high-quality image of Indian rural farmers taking care of cows and livestock in a green village field, sunrise lighting, warm tones, natural environment, cows, buffalo, goats, cinematic composition, ultra HD, 4K, professional photography
+```
+
+👉 Alternative (emotional style):
+
+```
+A heartwarming scene of a farmer gently feeding a cow in a rural Indian village, golden hour sunlight, soft lighting, realistic, high detail, 4K, documentary style
 ```
 
 ---
 
+# 🚨 2. EMERGENCY / ALERT SECTION
+
+**Prompt:**
+
+```
+A veterinarian urgently treating a sick cow in a rural farm, serious situation, medical kit, focused expression, realistic, dramatic lighting, high detail, 4K
+```
+
+---
+
+# 👨‍⚕️ 3. DOCTORS PAGE (Vet Profiles)
+
+👉 Avatar icons replace ಮಾಡಬಹುದು
+
+**Prompt:**
+
+```
+A professional Indian veterinarian standing in a rural animal clinic, wearing lab coat, stethoscope, cows in background, realistic portrait, sharp focus, 4K, natural lighting
+```
+
+👉 Female doctor:
+
+```
+An Indian female veterinarian examining a cow in a village farm, smiling, realistic, natural colors, high detail, 4K
+```
+
+---
+
+# 🗺️ 4. MAP VIEW BACKGROUND
+
+**Prompt:**
+
+```
+Top view satellite style image of a rural Indian village with farms, fields, roads, and animal sheds, realistic, Google Maps style, high resolution
+```
+
+---
+
+# 🩺 5. FIRST AID SECTION (VERY IMPORTANT)
+
+👉 Each categoryಗೆ separate images ಹಾಕಿದ್ರೆ 🔥
+
+### 🌡️ Fever
+
+```
+A cow resting under shade with a farmer checking its temperature using thermometer, rural setting, realistic, 4K
+```
+
+### 🩹 Injury
+
+```
+A farmer cleaning a wound on a cow leg using antiseptic, close-up, realistic, detailed, veterinary care, 4K
+```
+
+### 🦠 Infection
+
+```
+A cow with visible infection being treated by a veterinarian, rural farm background, realistic medical scene, high detail
+```
+
+### 🫁 Digestion
+
+```
+A bloated cow standing in a farm while farmer observing carefully, rural India, realistic, natural lighting
+```
+
+### 🐮 Pregnancy
+
+```
+A pregnant cow in a clean farm shed with farmer preparing for delivery, calm environment, realistic, 4K
+```
+
+### ☠️ Poisoning
+
+```
+A sick cow lying down while a farmer urgently calling a veterinarian, tense situation, realistic, cinematic lighting
+```
+
+---
+
+# 📋 6. GOVERNMENT SCHEMES SECTION
+
+**Prompt:**
+
+```
+Indian farmers happily standing with cows and government officials in a rural farm, receiving benefits or support, positive mood, realistic, 4K
+```
+
+---
+
+# 👨‍🌾 7. PROFILE SECTION
+
+**Prompt:**
+
+```
+A smiling Indian farmer standing with cows in his farm, traditional rural background, warm lighting, realistic portrait, 4K
+```
+
+---
+
+# 🤖 8. CHATBOT (Optional Illustration)
+
+```
+A friendly AI robot helping a farmer with livestock, futuristic but simple, rural background, clean illustration style mixed with realism
+```
+
+---
+
+# 💡 BONUS (IMPORTANT)
+
+👉 Images generate ಮಾಡಲು use ಮಾಡು:
+
+* Leonardo AI (best for realism)
+* DALL·E
+* Midjourney
+
+---
+
+# ⚙️ ಹೇಗೆ add ಮಾಡೋದು?
+
+ನಿನ್ನ `.hero` CSS ನಲ್ಲಿ:
+
+```css
+.hero{
+  background: url('images/hero.jpg') center/cover no-repeat;
+}
+```
+
+👉 doctor avatar:
+
+```html
+<img src="images/doctor1.jpg" class="doc-avatar"/>
+```
+
+---
+
+# 🚀 Pro Tip (very important)
+
+Prompt ಕೊನೆಯಲ್ಲಿ ಇವು add ಮಾಡು:
+
+```
+--no cartoon, no illustration, no blur, no low quality
+```
+
+---
+
+ನೀನು ಬೇಕಂದ್ರೆ next stepನಲ್ಲಿ:
+👉 ನಾನು ನಿನಗೆ **free tools link + images download + exact integration code** ಕೊಡ್ತೀನಿ
+👉 ಅಥವಾ **ready-made images generate ಮಾಡಿ ಕೊಡಬಹುದು**
+
+ಹೇಳು 👍
