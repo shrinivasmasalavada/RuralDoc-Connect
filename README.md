@@ -44,7 +44,7 @@ FeatureDetails🏠 Home ScreenGreen gradient header, 4 menu tiles, emergency 196
       Next time, try this in CoworkHand off complex tasks for Claude to handle independently. Come back to finished results.Upgrade to tryUpgrade to try
 # 💻 SOFTWARE TERMS EXPLANATION (Easy + Professional)
 
-ನಿನ್ನ project explain ಮಾಡುವಾಗ ಈ terms ಗೊತ್ತಿದ್ದರೆ ತುಂಬಾ powerful impression ಬರುತ್ತದೆ 🔥
+
 
 ---
 
@@ -52,7 +52,7 @@ FeatureDetails🏠 Home ScreenGreen gradient header, 4 menu tiles, emergency 196
 
 ## ✅ Meaning
 
-Userಗೆ ಕಾಣಿಸುವ ಭಾಗ.
+User
 
 👉 Example:
 
@@ -92,7 +92,7 @@ Userಗೆ ಕಾಣಿಸುವ ಭಾಗ.
 
 ## ✅ Meaning
 
-Websiteನ ಒಳಗೆ ಕೆಲಸ ಮಾಡುವ system.
+Websiteನ system.
 
 👉 Example:
 
@@ -101,7 +101,7 @@ Websiteನ ಒಳಗೆ ಕೆಲಸ ಮಾಡುವ system.
 * AI communication
 * server logic
 
-ನಿನ್ನ projectನಲ್ಲಿ future backend:
+ project future backend:
 
 * doctor data storage
 * emergency requests
