@@ -925,4 +925,18 @@ A real-time rural veterinary support platform with:
 🩺 Offline first-aid support
 
 Built completely by myself using frontend development skills and practical implementation.
+🚀 Project Title: *GORAKSHA – Pashu Sanjeevini* 🐄
+
+This is a completely self-developed project built from scratch — not a purchased project ❌
+
+✅ Designed full responsive UI
+✅ Emergency veterinary support system
+✅ Nearby doctor finder with map/list view
+✅ Offline animal first-aid guidance
+✅ Government scheme integration
+✅ AI chatbot assistant for farmers
+✅ Mobile-friendly frontend using HTML, CSS & JavaScript
+
+From idea → design → coding → implementation
+Everything developed independently by me 💻⚡
 
