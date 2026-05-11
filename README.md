@@ -913,4 +913,16 @@ Your website should behave like a flexible rubber band:
 * Full layout on laptop/desktop
 
 ---
+Most people bought projects.
+I chose to build mine 💻🔥
+
+“GORAKSHA – Pashu Sanjeevini”
+A real-time rural veterinary support platform with:
+🐄 Emergency animal care
+👨‍⚕️ Vet doctor locator
+🤖 AI assistant
+📋 Govt schemes
+🩺 Offline first-aid support
+
+Built completely by myself using frontend development skills and practical implementation.
 
