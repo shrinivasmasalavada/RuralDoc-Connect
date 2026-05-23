@@ -939,4 +939,3 @@ This is a completely self-developed project built from scratch — not a purchas
 
 From idea → design → coding → implementation
 Everything developed independently by me 💻⚡
-
