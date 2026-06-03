@@ -1215,3 +1215,185 @@ I can help you build:
 
 step-by-step.
 
+
+
+
+
+ನಿನ್ನ **GORAKSHA – Pashu Sanjeevini** project ಗೆ Viva ನಲ್ಲಿ ಕೇಳಬಹುದಾದ ಪ್ರಮುಖ ಪ್ರಶ್ನೆಗಳು ಮತ್ತು ಉತ್ತರಗಳು:
+
+## 1. What is the main objective of your project?
+
+**Answer:**
+The main objective is to provide quick and accessible veterinary healthcare support for farmers through emergency assistance, doctor search, first aid guidance, government schemes information, and an AI chatbot.
+
+---
+
+## 2. Why did you choose this project?
+
+**Answer:**
+Many rural farmers face difficulty in accessing veterinary doctors during emergencies. This project helps bridge that gap by providing instant healthcare information and doctor connectivity.
+
+---
+
+## 3. Which technologies are used in this project?
+
+**Answer:**
+
+* HTML5
+* CSS3
+* JavaScript
+* Claude AI API
+* Responsive Web Design
+
+---
+
+## 4. What problem does this project solve?
+
+**Answer:**
+It solves delayed veterinary care, lack of animal health awareness, difficulty finding doctors, and limited access to government livestock schemes.
+
+---
+
+## 5. What are the major modules in your project?
+
+**Answer:**
+
+* Emergency Assistance Module
+* Veterinary Doctor Finder
+* First Aid Guidance
+* Government Schemes Module
+* AI Chatbot (Pashu Mitra AI)
+* User Profile Management
+
+---
+
+## 6. How does the Emergency Module work?
+
+**Answer:**
+When the emergency button is clicked, the system immediately displays the nearest veterinary doctor and provides a direct calling option.
+
+---
+
+## 7. What is the role of the AI chatbot?
+
+**Answer:**
+The AI chatbot provides instant guidance for animal health-related queries and basic first aid suggestions using Claude AI.
+
+---
+
+## 8. Why did you use JavaScript?
+
+**Answer:**
+JavaScript is used to create dynamic features such as page navigation, doctor filtering, chatbot interaction, emergency alerts, and real-time UI updates.
+
+---
+
+## 9. How is responsive design implemented?
+
+**Answer:**
+CSS media queries are used to make the application work properly on mobile phones, tablets, and desktop devices.
+
+---
+
+## 10. What is the Doctor Finder module?
+
+**Answer:**
+It helps farmers locate nearby veterinary doctors and provides information such as specialization, distance, ratings, and contact details.
+
+---
+
+## 11. How does the search functionality work?
+
+**Answer:**
+JavaScript filters doctor data based on user input such as doctor name, location, or specialization.
+
+---
+
+## 12. What is the purpose of the First Aid section?
+
+**Answer:**
+It provides immediate treatment guidance for common animal health issues before professional veterinary help arrives.
+
+---
+
+## 13. Why is offline support important?
+
+**Answer:**
+Many rural areas have poor internet connectivity. Offline first aid information ensures farmers can still access critical guidance.
+
+---
+
+## 14. What are the advantages of this project?
+
+**Answer:**
+
+* Easy to use
+* Mobile friendly
+* Quick emergency response
+* AI-powered assistance
+* Supports rural farmers
+* Improves animal healthcare awareness
+
+---
+
+## 15. What are the limitations of the current system?
+
+**Answer:**
+Currently, doctor data, maps, and scheme information are static and require integration with real databases and APIs for production use.
+
+---
+
+## 16. What API is used in your project?
+
+**Answer:**
+The project integrates with the Claude AI API from [Anthropic](https://www.anthropic.com?utm_source=chatgpt.com) for chatbot functionality.
+
+---
+
+## 17. How can this project be improved in the future?
+
+**Answer:**
+
+* GPS-based doctor tracking
+* Real-time appointments
+* Disease prediction using AI
+* Vaccination reminders
+* Mobile application development
+* Cloud database integration
+
+---
+
+## 18. What is unique about your project?
+
+**Answer:**
+It combines emergency veterinary support, AI assistance, first aid guidance, and government scheme awareness in a single platform specifically designed for rural farmers.
+
+---
+
+## 19. What software engineering concepts are used?
+
+**Answer:**
+
+* Modular Design
+* Responsive UI Design
+* Client-Side Scripting
+* API Integration
+* Event-Driven Programming
+
+---
+
+## 20. If given more time, what would you add?
+
+**Answer:**
+I would add AI-based disease detection using images, real-time GPS tracking, multilingual voice assistance, cloud storage, and appointment booking features.
+
+---
+
+### Frequently Asked Final Viva Question
+
+**Q: Explain your project in 1 minute.**
+
+**Answer:**
+"GORAKSHA – Pashu Sanjeevini is a web-based rural animal healthcare platform developed to help farmers access veterinary services quickly. The system provides emergency doctor contact, animal first aid guidance, government livestock scheme information, and an AI-powered chatbot called Pashu Mitra. It is built using HTML, CSS, JavaScript, and Claude AI API. The platform is responsive, easy to use, and designed to improve animal healthcare accessibility in rural areas."
+
+
